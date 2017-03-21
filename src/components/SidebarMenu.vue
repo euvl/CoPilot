@@ -70,6 +70,10 @@
       </router-link>
     </li>
 
+    <li-button to="/repos" icon="fa-heart" label="Repos">
+      <small class="label pull-right bg-green">AJAX</small>
+    </li-button>
+
     <li class="header">PAGES</li>
     <li class="pageLink" v-on:click="toggleMenu">
       <router-link to="/login">
@@ -85,8 +89,13 @@
   </ul>
 </template>
 <script>
+import SidebarMenuButton from './SidebarMenuButton'
+
 export default {
   name: 'SidebarName',
+  components: {
+    LiButton: SidebarMenuButton
+  },
   methods: {
     toggleMenu (event) {
       // remove active from li
@@ -108,7 +117,8 @@ export default {
     padding: 12px 15px 12px 15px;
   }
 
-  .sidebar-menu li.active>a>.fa-angle-left, .sidebar-menu li.active>a>.pull-right-container>.fa-angle-left {
+  .sidebar-menu li.active>a>.fa-angle-left,
+  .sidebar-menu li.active>a>.pull-right-container>.fa-angle-left {
     animation-name: rotate;
     animation-duration: .2s;
     animation-fill-mode: forwards;
